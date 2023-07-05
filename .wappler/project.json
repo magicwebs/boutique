@@ -1,0 +1,45 @@
+{
+  "projectName": "boutique",
+  "styleFile": "/css/style.css",
+  "assetsFolder": "/assets",
+  "designFramework": "bootstrap5",
+  "frameworks": [
+    {
+      "name": "fontawesome_5",
+      "type": "cdn"
+    },
+    {
+      "name": "bootstrap5",
+      "type": "local"
+    },
+    {
+      "name": "appConnect",
+      "type": "local"
+    }
+  ],
+  "hostingType": "wappler",
+  "projectServerModel": "node",
+  "runtime": "capacitor",
+  "webRootFolder": "/public",
+  "useRouting": true,
+  "addBase": true,
+  "routingHandler": "node",
+  "projectLinksType": "site",
+  "targets": [
+    {
+      "name": "Development",
+      "remoteURL": "http://localhost:3000/",
+      "access": "local",
+      "targetType": "wappler",
+      "databaseConnectionType": "custom",
+      "db_host": "139.162.255.45",
+      "db_port": "3306",
+      "db_user": "magicweb_boutique_user",
+      "db_password": "[jFqvODMLkh#",
+      "db_database": "magicweb_boutique_db"
+    }
+  ],
+  "activeTarget": "Development",
+  "projectType": "web",
+  "extensions": []
+}

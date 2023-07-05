@@ -1,0 +1,17 @@
+{
+  "name": "db",
+  "module": "dbconnector",
+  "action": "connect",
+  "options": {
+    "client": "mysql",
+    "connection": {
+      "host": "139.162.255.45",
+      "port": 3306,
+      "user": "magicweb_boutique_user",
+      "password": "[jFqvODMLkh#",
+      "database": "magicweb_boutique_db"
+    },
+    "tz": "utc"
+  },
+  "fileName": "db.json"
+}

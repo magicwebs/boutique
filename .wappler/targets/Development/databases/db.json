@@ -1,0 +1,575 @@
+{
+  "type": "mysql2",
+  "connection": {
+    "host": "139.162.255.45",
+    "port": 3306,
+    "user": "magicweb_boutique_user",
+    "password": "[jFqvODMLkh#",
+    "database": "magicweb_boutique_db"
+  },
+  "direct": true,
+  "schema": {
+    "tables": {
+      "categories": {
+        "columns": {
+          "id": {
+            "db": {
+              "type": "increments",
+              "primary": true,
+              "nullable": false
+            }
+          },
+          "name": {
+            "db": {
+              "type": "string",
+              "default": "",
+              "maxLength": 50,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "short_description": {
+            "db": {
+              "type": "text",
+              "default": "",
+              "maxLength": 65535,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "long_description": {
+            "db": {
+              "type": "text",
+              "default": "",
+              "maxLength": 65535,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "image": {
+            "db": {
+              "type": "string",
+              "default": "",
+              "maxLength": 100,
+              "primary": false,
+              "nullable": true
+            }
+          }
+        },
+        "db": {
+          "engine": "InnoDB",
+          "schema": "magicweb_boutique_db",
+          "collation": "latin1_swedish_ci",
+          "system_versioned": false
+        },
+        "sub": {
+          "category_products": "category_id"
+        }
+      },
+      "customer_orders": {
+        "columns": {
+          "id": {
+            "db": {
+              "type": "increments",
+              "primary": true,
+              "nullable": false
+            }
+          },
+          "order_date": {
+            "db": {
+              "type": "date",
+              "default": "",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "amount": {
+            "db": {
+              "type": "decimal",
+              "default": "",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "street": {
+            "db": {
+              "type": "string",
+              "default": "",
+              "maxLength": 100,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "city": {
+            "db": {
+              "type": "string",
+              "default": "",
+              "maxLength": 50,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "postcode": {
+            "db": {
+              "type": "string",
+              "default": "",
+              "maxLength": 20,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "country": {
+            "db": {
+              "type": "string",
+              "default": "",
+              "maxLength": 100,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "shipped_date": {
+            "db": {
+              "type": "date",
+              "default": "",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "tracking_number": {
+            "db": {
+              "type": "string",
+              "default": "",
+              "maxLength": 255,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "customer_id": {
+            "db": {
+              "type": "reference",
+              "default": "",
+              "primary": false,
+              "nullable": true,
+              "references": "id",
+              "inTable": "customers",
+              "referenceType": "integer",
+              "onUpdate": "CASCADE",
+              "onDelete": "CASCADE"
+            }
+          }
+        },
+        "db": {
+          "engine": "InnoDB",
+          "schema": "magicweb_boutique_db",
+          "collation": "latin1_swedish_ci",
+          "system_versioned": false
+        },
+        "tablePrefix": "customer_",
+        "parent": "customers",
+        "sub": {
+          "customer_order_items": "order_id"
+        }
+      },
+      "category_products": {
+        "columns": {
+          "id": {
+            "db": {
+              "type": "increments",
+              "primary": true,
+              "nullable": false
+            }
+          },
+          "name": {
+            "db": {
+              "type": "string",
+              "default": "",
+              "maxLength": 100,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "price": {
+            "db": {
+              "type": "decimal",
+              "default": "",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "short_description": {
+            "db": {
+              "type": "text",
+              "default": "",
+              "maxLength": 65535,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "long_description": {
+            "db": {
+              "type": "text",
+              "default": "",
+              "maxLength": 65535,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "image": {
+            "db": {
+              "type": "string",
+              "default": "",
+              "maxLength": 100,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "update_date": {
+            "db": {
+              "type": "date",
+              "default": "",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "live": {
+            "db": {
+              "type": "boolean",
+              "default": "",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "featured": {
+            "db": {
+              "type": "boolean",
+              "default": "",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "category_id": {
+            "db": {
+              "type": "reference",
+              "default": "",
+              "primary": false,
+              "nullable": true,
+              "references": "id",
+              "inTable": "categories",
+              "referenceType": "integer",
+              "onUpdate": "CASCADE",
+              "onDelete": "CASCADE"
+            }
+          }
+        },
+        "db": {
+          "engine": "InnoDB",
+          "schema": "magicweb_boutique_db",
+          "collation": "latin1_swedish_ci",
+          "system_versioned": false
+        },
+        "tablePrefix": "category_",
+        "parent": "categories"
+      },
+      "customers": {
+        "columns": {
+          "id": {
+            "db": {
+              "type": "increments",
+              "primary": true,
+              "nullable": false
+            }
+          },
+          "first_name": {
+            "db": {
+              "type": "string",
+              "default": "",
+              "maxLength": 50,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "last_name": {
+            "db": {
+              "type": "string",
+              "default": "",
+              "maxLength": 50,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "street": {
+            "db": {
+              "type": "string",
+              "default": "",
+              "maxLength": 100,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "city": {
+            "db": {
+              "type": "string",
+              "default": "",
+              "maxLength": 50,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "postcode": {
+            "db": {
+              "type": "string",
+              "default": "",
+              "maxLength": 50,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "country": {
+            "db": {
+              "type": "string",
+              "default": "",
+              "maxLength": 100,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "email": {
+            "db": {
+              "type": "string",
+              "default": "",
+              "maxLength": 100,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "phone": {
+            "db": {
+              "type": "string",
+              "default": "",
+              "maxLength": 20,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "creation_date": {
+            "db": {
+              "type": "date",
+              "default": "",
+              "primary": false,
+              "nullable": true
+            }
+          }
+        },
+        "db": {
+          "engine": "InnoDB",
+          "schema": "magicweb_boutique_db",
+          "collation": "latin1_swedish_ci",
+          "system_versioned": false
+        },
+        "sub": {
+          "customer_orders": "customer_id"
+        }
+      },
+      "customer_order_items": {
+        "columns": {
+          "id": {
+            "db": {
+              "type": "increments",
+              "primary": true,
+              "nullable": false
+            }
+          },
+          "product_id": {
+            "db": {
+              "type": "integer",
+              "default": "",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "name": {
+            "db": {
+              "type": "string",
+              "default": "",
+              "maxLength": 50,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "price": {
+            "db": {
+              "type": "decimal",
+              "default": "",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "quantity": {
+            "db": {
+              "type": "integer",
+              "default": "",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "order_id": {
+            "db": {
+              "type": "reference",
+              "default": "",
+              "primary": false,
+              "nullable": true,
+              "references": "id",
+              "inTable": "customer_orders",
+              "referenceType": "integer",
+              "onUpdate": "CASCADE",
+              "onDelete": "CASCADE"
+            }
+          }
+        },
+        "db": {
+          "engine": "InnoDB",
+          "schema": "magicweb_boutique_db",
+          "collation": "latin1_swedish_ci",
+          "system_versioned": false
+        },
+        "tablePrefix": "customer_order_",
+        "parent": "customer_orders"
+      }
+    },
+    "views": {},
+    "collations": [
+      {
+        "collation": "utf8mb4_general_ci",
+        "charset": "utf8mb4"
+      },
+      {
+        "collation": "utf8mb4_bin",
+        "charset": "utf8mb4"
+      },
+      {
+        "collation": "utf8mb4_unicode_ci",
+        "charset": "utf8mb4"
+      },
+      {
+        "collation": "utf8mb4_icelandic_ci",
+        "charset": "utf8mb4"
+      },
+      {
+        "collation": "utf8mb4_latvian_ci",
+        "charset": "utf8mb4"
+      },
+      {
+        "collation": "utf8mb4_romanian_ci",
+        "charset": "utf8mb4"
+      },
+      {
+        "collation": "utf8mb4_slovenian_ci",
+        "charset": "utf8mb4"
+      },
+      {
+        "collation": "utf8mb4_polish_ci",
+        "charset": "utf8mb4"
+      },
+      {
+        "collation": "utf8mb4_estonian_ci",
+        "charset": "utf8mb4"
+      },
+      {
+        "collation": "utf8mb4_spanish_ci",
+        "charset": "utf8mb4"
+      },
+      {
+        "collation": "utf8mb4_swedish_ci",
+        "charset": "utf8mb4"
+      },
+      {
+        "collation": "utf8mb4_turkish_ci",
+        "charset": "utf8mb4"
+      },
+      {
+        "collation": "utf8mb4_czech_ci",
+        "charset": "utf8mb4"
+      },
+      {
+        "collation": "utf8mb4_danish_ci",
+        "charset": "utf8mb4"
+      },
+      {
+        "collation": "utf8mb4_lithuanian_ci",
+        "charset": "utf8mb4"
+      },
+      {
+        "collation": "utf8mb4_slovak_ci",
+        "charset": "utf8mb4"
+      },
+      {
+        "collation": "utf8mb4_spanish2_ci",
+        "charset": "utf8mb4"
+      },
+      {
+        "collation": "utf8mb4_roman_ci",
+        "charset": "utf8mb4"
+      },
+      {
+        "collation": "utf8mb4_persian_ci",
+        "charset": "utf8mb4"
+      },
+      {
+        "collation": "utf8mb4_esperanto_ci",
+        "charset": "utf8mb4"
+      },
+      {
+        "collation": "utf8mb4_hungarian_ci",
+        "charset": "utf8mb4"
+      },
+      {
+        "collation": "utf8mb4_sinhala_ci",
+        "charset": "utf8mb4"
+      },
+      {
+        "collation": "utf8mb4_german2_ci",
+        "charset": "utf8mb4"
+      },
+      {
+        "collation": "utf8mb4_croatian_mysql561_ci",
+        "charset": "utf8mb4"
+      },
+      {
+        "collation": "utf8mb4_unicode_520_ci",
+        "charset": "utf8mb4"
+      },
+      {
+        "collation": "utf8mb4_vietnamese_ci",
+        "charset": "utf8mb4"
+      },
+      {
+        "collation": "utf8mb4_croatian_ci",
+        "charset": "utf8mb4"
+      },
+      {
+        "collation": "utf8mb4_myanmar_ci",
+        "charset": "utf8mb4"
+      },
+      {
+        "collation": "utf8mb4_thai_520_w2",
+        "charset": "utf8mb4"
+      },
+      {
+        "collation": "utf8mb4_general_nopad_ci",
+        "charset": "utf8mb4"
+      },
+      {
+        "collation": "utf8mb4_nopad_bin",
+        "charset": "utf8mb4"
+      },
+      {
+        "collation": "utf8mb4_unicode_nopad_ci",
+        "charset": "utf8mb4"
+      },
+      {
+        "collation": "utf8mb4_unicode_520_nopad_ci",
+        "charset": "utf8mb4"
+      }
+    ]
+  }
+}
