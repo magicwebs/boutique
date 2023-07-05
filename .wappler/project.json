@@ -30,16 +30,9 @@
       "name": "Development",
       "remoteURL": "http://localhost:3000/",
       "access": "local",
-      "targetType": "wappler",
-      "databaseConnectionType": "custom",
-      "db_host": "139.162.255.45",
-      "db_port": "3306",
-      "db_user": "magicweb_boutique_user",
-      "db_password": "[jFqvODMLkh#",
-      "db_database": "magicweb_boutique_db"
+      "targetType": "wappler"
     }
   ],
   "activeTarget": "Development",
-  "projectType": "web",
-  "extensions": []
+  "projectType": "web"
 }
